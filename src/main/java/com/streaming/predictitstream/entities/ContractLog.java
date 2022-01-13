@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.sql.Timestamp;
 
+/**
+ * Used for mapping the contracts to the database over time
+ */
 @Entity
 public class ContractLog {
     @Id

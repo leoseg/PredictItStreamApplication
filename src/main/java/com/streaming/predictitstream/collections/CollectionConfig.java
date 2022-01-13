@@ -10,6 +10,10 @@ import java.util.List;
 @Configuration
 public class CollectionConfig {
 
+    /**
+     * Names of the contracts that should be stored from the PredictIt api
+     * @return list with names
+     */
     @Bean
     @Qualifier("CollectionsBean")
     public List<String> ImportantContractNames(){

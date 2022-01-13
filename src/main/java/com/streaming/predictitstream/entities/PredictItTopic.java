@@ -8,6 +8,9 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
+/**
+ * Whole payload gotten from PredictIt contains timestamp, id, name and list of contracts
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PredictItTopic implements Serializable {
 

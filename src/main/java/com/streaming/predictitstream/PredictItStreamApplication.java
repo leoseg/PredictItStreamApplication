@@ -32,6 +32,10 @@ public class PredictItStreamApplication {
         SpringApplication.run(PredictItStreamApplication.class, args);
     }
 
+    /**
+     * Kafka listener to listen to all topics beginning with president.* and saving the to the same table
+     * @param record record of type predictittopic with the data
+     */
     @KafkaListener(topicPattern= "president.*", groupId = "group-1", containerFactory = "kafkaListenerContainerFactory")
     public void listenPresidentItalia(PredictItTopic record) {
         LOGGER.log(Level.INFO,"Recieved message from "+record.getShortName());

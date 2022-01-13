@@ -17,9 +17,12 @@ import org.springframework.kafka.support.serializer.JsonSerializer;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Kafka configuration for consuming messages from topics by PredictIt api
+ */
 @Configuration
 @EnableKafka
-public class KafkaConfigContracts {
+public class KafkaConfigPredictIt {
 
     @Value( "localhost:9092" )
     private String bootstrapAddress;
@@ -27,6 +30,11 @@ public class KafkaConfigContracts {
     @Value( "group-1" )
     private String groupId;
 
+    /**
+     * Creates consumerfactory for creating consumer instances that deserialize
+     * payloads from messages of PredictIt-topic from kafka brooker
+     * @return consumferfactory
+     */
     @Bean
     @Lazy
     public ConsumerFactory<String, PredictItTopic> consumerFactory() {
@@ -51,6 +59,11 @@ public class KafkaConfigContracts {
         return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), deserializer);
     }
 
+    /**
+     * Creates listener container for methods annotated with @kafkalistener, uses consumerfactory before defined
+     * provide multi threaded consumption
+     * @return listenercontainerfactory
+     */
     @Bean
     @Lazy
     public ConcurrentKafkaListenerContainerFactory<String, PredictItTopic>

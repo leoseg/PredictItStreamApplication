@@ -4,6 +4,10 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
+/**
+ * Single contract entry, Used for deserializing the payload from PredictIt api
+ * each contract can be bought or sold like a share
+ */
 public class Contract implements Serializable {
 
     @Getter@Setter
