@@ -32,14 +32,16 @@ public class PredictItStreamApplication {
         SpringApplication.run(PredictItStreamApplication.class, args);
     }
 
-    @KafkaListener(topics = "president.*", groupId = "group-1", containerFactory = "kafkaListenerContainerFactory")
+    @KafkaListener(topicPattern= "president.*", groupId = "group-1", containerFactory = "kafkaListenerContainerFactory")
     public void listenPresidentItalia(PredictItTopic record) {
         LOGGER.log(Level.INFO,"Recieved message from "+record.getShortName());
         Timestamp timestamp= record.getTimeStamp();
+        int counter =0;
         for (Contract contract : record.getContracts()){
-            if (contractNames.contains(contract.getName())){
+            if (contractNames.contains(contract.getName()) || counter <5){
                 contractService.saveContract(contract,timestamp);
             }
+            counter++;
 
         }
 

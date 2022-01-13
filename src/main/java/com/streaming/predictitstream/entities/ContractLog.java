@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.sql.Timestamp;
 
@@ -12,13 +13,14 @@ import java.sql.Timestamp;
 public class ContractLog {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue
     @Getter
     @Setter
     private Long id;
 
     @Getter
     @Setter
-    int Candiateid;
+    int candiateId;
 
     @Getter@Setter
     double lastTradePrice;

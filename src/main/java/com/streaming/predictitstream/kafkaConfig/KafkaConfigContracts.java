@@ -6,6 +6,7 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
@@ -18,7 +19,7 @@ import java.util.Map;
 
 @Configuration
 @EnableKafka
-public class KafkaConfigCandidates {
+public class KafkaConfigContracts {
 
     @Value( "localhost:9092" )
     private String bootstrapAddress;
@@ -27,6 +28,7 @@ public class KafkaConfigCandidates {
     private String groupId;
 
     @Bean
+    @Lazy
     public ConsumerFactory<String, PredictItTopic> consumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(
@@ -50,6 +52,7 @@ public class KafkaConfigCandidates {
     }
 
     @Bean
+    @Lazy
     public ConcurrentKafkaListenerContainerFactory<String, PredictItTopic>
     kafkaListenerContainerFactory() {
 

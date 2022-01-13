@@ -13,6 +13,8 @@ public class CollectionConfig {
     @Bean
     @Qualifier("CollectionsBean")
     public List<String> ImportantContractNames(){
-        return  Arrays.asList("Mario Draghi","Silvio Berlusconi","Viktor Orban" ,"Peter Marki-Zay","Emmanuel Macron" ,"Valerie Pecresse","Marine le Pen","Will Boris Johnson remain British prime minister through May?");
+        return  Arrays.asList("Mario Draghi","Silvio Berlusconi","Viktor Orbán" ,"Péter Márki-Zay","Emmanuel Macron" ,"Válerie Pécresse","Marine Le Pen","Will Boris Johnson remain British prime minister through May?","Boris Johnson");
     }
+
+
 }
