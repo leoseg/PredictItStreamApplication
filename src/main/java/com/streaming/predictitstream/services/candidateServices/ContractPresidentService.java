@@ -1,5 +1,4 @@
 package com.streaming.predictitstream.services.candidateServices;
-
 import com.streaming.predictitstream.entities.Contract;
 import com.streaming.predictitstream.entities.ContractLog;
 import com.streaming.predictitstream.repository.candidateRepositories.ContractRepository;

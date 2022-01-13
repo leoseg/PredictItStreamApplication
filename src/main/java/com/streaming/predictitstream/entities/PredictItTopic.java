@@ -1,9 +1,7 @@
 package com.streaming.predictitstream.entities;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
