@@ -1,4 +1,4 @@
-version: '2'
+version: '3.2'
 services:
   zookeeper:
     image: "confluentinc/cp-zookeeper:5.0.0"
@@ -43,7 +43,7 @@ services:
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: zookeeper:2181
 
   kafka-connect:
-    image: connectimage
+    image: seeger16/connectimage
     ports:
       - "8083:8083"
     environment:
@@ -72,9 +72,13 @@ services:
       - schema-registry
 
   kafka-consumer:
-    image: predictitconsumer
+    image: seeger16/predictitconsumer
     environment:
       KAFKAADRESS: "${KAFKAADRESS}"
+      SPRING_DATASOURCE_URL: "${SPRING_DATASOURCE_URL}"
+      SPRING_DATASOURCE_USERNAME: "${SPRING_DATASOURCE_USERNAME}"
+      SPRING_DATASOURCE_PASSWORD: "${SPRING_DATASOURCE_PASSWORD}"
+
     env_file:
       - databasesecrets.env
     depends_on:
