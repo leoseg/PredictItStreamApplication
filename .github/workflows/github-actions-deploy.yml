@@ -1,7 +1,7 @@
 name: deploy
 on: [workflow_dispatch]
 jobs:
-  build_jars:
+  build_jars_images:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -15,11 +15,6 @@ jobs:
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
       - name: Build with Gradle
         run: ./gradlew build
-
-  build_images:
-    needs: [build_jars]
-    runs-on: ubuntu-latest
-    steps:
       - name: Set up docker builder
         uses: docker/setup-buildx-action@v1
       - name: Login to Dockerhub
