@@ -1,10 +1,20 @@
 # PredictItStreamApplication
 Streams data from predictIt to google cloud postgres database with kafka. 
-
+PredictIt is a website where you can bet on the outcome of political events like buying shares. 
 Data is streamed from the PredictIt api into a table in the postgres database each 10 Minutes with kafka. The rest-api connector used is from the community project at 
 https://github.com/llofberg/kafka-connect-rest . 
+
 ## Data Streamed
 
+Data is streamed of 5 markets of europe:
+  - Next president of italia ,id :7663
+  - Next president of france ,id :7360
+  - Boris stays at primeminister ,id :7665
+  - Next president of hungary ,id :7636
+  - Next leader in europe who is out: 7643
+
+For each market the 5 best contracts with their trading prices are stored all 10 minutes. Visit 
+https://www.predictit.org/ for more information. 
 
 ## Deploying
 
