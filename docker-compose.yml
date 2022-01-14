@@ -43,7 +43,7 @@ services:
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: zookeeper:2181
 
   kafka-connect:
-    image: seeger16/connectimage
+    image: "${DOCKERHUB_USERNAME}/connectimage"
     ports:
       - "8083:8083"
     environment:
@@ -72,7 +72,7 @@ services:
       - schema-registry
 
   kafka-consumer:
-    image: seeger16/predictitconsumer
+    image: "${DOCKERHUB_USERNAME}/predictitconsumer"
     environment:
       KAFKAADRESS: "${KAFKAADRESS}"
       SPRING_DATASOURCE_URL: "${SPRING_DATASOURCE_URL}"

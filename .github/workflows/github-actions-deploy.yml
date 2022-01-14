@@ -1,7 +1,7 @@
 name: deploy
 on: [workflow_dispatch]
 jobs:
-  build_jars_images:
+  build_jars_and_images:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,12 +27,12 @@ jobs:
         with:
           file: DockerfileConnect
           push: true
-          tags: seeger16/connectimage:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/connectimage:latest
       - name: Build and push consumerimage
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: seeger16/predictitconsumer:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/predictitconsumer:latest
 
   deploy:
     runs-on: self-hosted
@@ -41,6 +41,7 @@ jobs:
       SPRING_DATASOURCE_URL: ${{ secrets.SPRING_DATASOURCE_URL }}
       SPRING_DATASOURCE_USERNAME: ${{ secrets.SPRING_DATASOURCE_USERNAME }}
       SPRING_DATASOURCE_PASSWORD: ${{ secrets.SPRING_DATASOURCE_PASSWORD }}
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
