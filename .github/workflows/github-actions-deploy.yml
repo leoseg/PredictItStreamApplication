@@ -39,7 +39,7 @@ jobs:
           tags: seeger16/predictitconsumer:latest
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     env:
       KAFKAADRESS: kafka:29092
       SPRING_DATASOURCE_URL: ${{ secrets.SPRING_DATASOURCE_URL }}
