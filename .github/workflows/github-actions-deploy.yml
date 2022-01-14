@@ -17,6 +17,7 @@ jobs:
         run: ./gradlew build
 
   build_images:
+    needs: [build_jars]
     runs-on: ubuntu-latest
     steps:
       - name: Set up docker builder
