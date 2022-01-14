@@ -23,7 +23,7 @@ import java.util.Map;
 @EnableKafka
 public class KafkaConfigPredictIt {
 
-    @Value( "localhost:9092" )
+    @Value("${kafka.adress}")
     private String bootstrapAddress;
 
     @Value( "group-1" )

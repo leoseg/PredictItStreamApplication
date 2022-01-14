@@ -28,9 +28,10 @@ dependencies {
     implementation group: 'org.apache.kafka', name: 'kafka-clients'
     implementation 'com.fasterxml.jackson.core:jackson-core'
     implementation 'com.fasterxml.jackson.core:jackson-annotations'
-    implementation 'org.hsqldb:hsqldb'
+    //implementation 'org.hsqldb:hsqldb'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    runtimeOnly 'com.h2database:h2'
+    compileOnly 'com.google.cloud.sql:postgres-socket-factory:1.4.1'
+    runtimeOnly 'org.postgresql:postgresql'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
@@ -40,7 +41,9 @@ dependencies {
     testImplementation 'org.testcontainers:kafka'
     testImplementation 'org.junit.jupiter:junit-jupiter-api'
     testImplementation 'org.springframework.kafka:spring-kafka-test'
+    testImplementation 'org.hsqldb:hsqldb'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testRuntimeOnly 'com.h2database:h2'
 }
 
 dependencyManagement {
