@@ -28,13 +28,17 @@ jobs:
           file: DockerfileConnect
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/connectimage:latest
+      - name: check directory
+        run:  dir build/libs/
       - name: Build and push consumerimage
         uses: docker/build-push-action@v2
         with:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/predictitconsumer:latest
+          context: .
 
   deploy:
+    needs: [build_jars_and_images]
     runs-on: self-hosted
     env:
       KAFKAADRESS: kafka:29092
