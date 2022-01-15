@@ -21,7 +21,7 @@ public class ContractLog {
 
     @Getter
     @Setter
-    int candiateId;
+    int candidateId;
 
     @Getter@Setter
     double lastTradePrice;
