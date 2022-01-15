@@ -55,4 +55,4 @@ jobs:
         run: docker exec predictitstreamapplication_kafka_1 cub kafka-ready -b localhost:9092 1 50
       - name: create topics and connect predictit api
         run: ./bashscripts/connect_predictit.sh
-        shell: bash
+
