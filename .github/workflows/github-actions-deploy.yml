@@ -52,7 +52,7 @@ jobs:
       - name: Bring containers up
         run: docker-compose up --force-recreate --renew-anon-volumes -d
       - name: Wait for kafka to be ready
-        run: docker exec predictitstreamapplication_kafka_1 cub kafka-ready -b localhost:9092 1 20
+        run: docker exec predictitstreamapplication_kafka_1 cub kafka-ready -b localhost:9092 1 50
       - name: create topics and connect predictit api
         run: ./bashscripts/connect_predictit.sh
         shell: bash
