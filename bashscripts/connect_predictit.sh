@@ -1,18 +1,18 @@
 #!/bin/bash
 
-docker-compose exec kafka kafka-topics --create --zookeeper \
+docker-compose exec -T kafka kafka-topics --create --zookeeper \
 zookeeper:2181 --replication-factor 1 --partitions 1 --topic president.boris-stays
 
-docker-compose exec kafka kafka-topics --create --zookeeper \
+docker-compose exec -T kafka kafka-topics --create --zookeeper \
 zookeeper:2181 --replication-factor 1 --partitions 1 --topic president.france-president
 
-docker-compose exec kafka kafka-topics --create --zookeeper \
+docker-compose exec -T kafka kafka-topics --create --zookeeper \
 zookeeper:2181 --replication-factor 1 --partitions 1 --topic president.italian-president
 
-docker-compose exec kafka kafka-topics --create --zookeeper \
+docker-compose exec -T kafka kafka-topics --create --zookeeper \
 zookeeper:2181 --replication-factor 1 --partitions 1 --topic president.hungarian-prime-minister
 
-docker-compose exec kafka kafka-topics --create --zookeeper \
+docker-compose exec -T kafka kafka-topics --create --zookeeper \
 zookeeper:2181 --replication-factor 1 --partitions 1 --topic president.european-leader-leaves
 
 
