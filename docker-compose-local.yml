@@ -74,7 +74,7 @@ services:
   kafka-consumer:
     image: predictitconsumer
     environment:
-      KAFKAADRESS: "${KAFKAADRESS}"
+      KAFKAADRESS: "kafka:29092"
       GOOGLE_APPLICATION_CREDENTIALS: "/gcp/creds.json"
     env_file:
       - databasesecrets.env
@@ -87,3 +87,20 @@ services:
         source: ./creds.json
         target: /gcp/creds.json
 
+  kafka-setup:
+    image: confluentinc/cp-kafka:5.1.1
+    depends_on:
+      - kafka
+      - schema-registry
+    command: "bash -c 'cub kafka-ready -b kafka:29092 1 40 && \
+                       kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --partitions 1 --replication-factor 1 --topic president.boris-stays && \
+                       kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --partitions 1 --replication-factor 1 --topic president.france-president && \
+                       kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --partitions 1 --replication-factor 1 --topic president.italian-president && \
+                       kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --partitions 1 --replication-factor 1 --topic president.hungarian-prime-minister && \
+                       kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --partitions 1 --replication-factor 1 --topic president.european-leader-leaves'"
+
+    environment:
+      # The following settings are listed here only to satisfy the image's requirements.
+      # We override the image's `command` anyways, hence this container will not start a broker.
+      KAFKA_BROKER_ID: ignored
+      KAFKA_ZOOKEEPER_CONNECT: ignored

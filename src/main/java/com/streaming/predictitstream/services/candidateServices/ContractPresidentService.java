@@ -24,7 +24,7 @@ public class ContractPresidentService implements ContractService {
 
     @Override
     public ContractLog setContractLogData(Contract contract, ContractLog contractPresidentLog, Timestamp timestamp) {
-            contractPresidentLog.setCandiateId(contract.getId());
+            contractPresidentLog.setCandidateId(contract.getId());
             contractPresidentLog.setLastTradePrice(contract.getLastTradePrice());
             contractPresidentLog.setTimeStamp(timestamp);
             contractPresidentLog.setBestBuyNoCost(contract.getBestBuyNoCost());
