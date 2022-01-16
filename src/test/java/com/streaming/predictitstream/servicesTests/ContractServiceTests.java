@@ -52,7 +52,7 @@ public class ContractServiceTests {
         assert(exspectedContractLog.getLastTradePrice()==0.5);
         assert(exspectedContractLog.getBestBuyYesCost()==0.8);
         assert(exspectedContractLog.getBestBuyNoCost()==0.1);
-        assert(exspectedContractLog.getCandiateId()==25666);
+        assert(exspectedContractLog.getCandidateId()==25666);
 
     }
 }
