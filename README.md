@@ -27,4 +27,4 @@ Then you can run the script "deploy_local.sh".
 Copy the repository to your github account. 
 Install docker and docker-compose on your google cloud engine. Then install a self-hosted git-actions-runner on the instance and execute the github-actions workflow build and deploy at your github repository page under actions. 
 Be sure to provide the secrets need in your github repository. Also only add a self-hosted runner to a private repository for security reasons.
-When the deployment is ready run the commands from the "connect_predictit.sh" file on your machine.
+
