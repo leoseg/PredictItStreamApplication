@@ -1,8 +1,7 @@
-name: build
+name: deploy
 on: [workflow_dispatch]
 jobs:
   deploy:
-    needs: [build_jars_and_images]
     runs-on: self-hosted
     env:
       KAFKAADRESS: kafka:29092
