@@ -21,8 +21,8 @@ jobs:
         uses: docker-compose pull
       - name: Bring containers up
         run: docker-compose up --force-recreate --renew-anon-volumes -d
-      - name: Sleep for 60 seconds
-        run: sleep 60s
+      - name: Sleep for 120 seconds
+        run: sleep 120s
         shell: bash
       - name: connect predictit api
         run: bash bashscripts/connect_predictit.sh
