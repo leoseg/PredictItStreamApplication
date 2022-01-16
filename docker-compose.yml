@@ -95,12 +95,12 @@ services:
       - kafka
       - schema-registry
     command: "bash -c 'echo Waiting for Kafka to be ready... && \
-                         cub kafka-ready -b broker:9092 1 40 && \
+                         cub kafka-ready -b kafka:29092 1 40 && \
                          kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --partitions 1 --replication-factor 1 --topic president.boris-stays && \
                          kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --partitions 1 --replication-factor 1 --topic president.france-president && \
                          kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --partitions 1 --replication-factor 1 --topic president.italian-president && \
                          kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --partitions 1 --replication-factor 1 --topic president.hungarian-prime-minister && \
-                         kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --partitions 1 --replication-factor 1 --topic president.european-leader-leaves && "
+                         kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --partitions 1 --replication-factor 1 --topic president.european-leader-leaves && '"
 
 
     environment:
