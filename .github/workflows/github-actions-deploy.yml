@@ -16,4 +16,10 @@ jobs:
         run: docker-compose up --force-recreate --renew-anon-volumes -d
       - name: Wait for kafka to be ready
         run: docker exec predictitstreamapplication_kafka_1 cub kafka-ready -b localhost:9092 1 50
+      - name: Sleep for 30 seconds
+        run: sleep 30s
+        shell: bash
+      - name: connect predictit api
+        run: bash bashscripts/connect_predictit.sh
+        shell: bash
 
