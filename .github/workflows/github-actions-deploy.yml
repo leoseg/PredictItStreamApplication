@@ -18,7 +18,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Update image
-        uses: docker-compose pull
+        run: docker-compose pull
       - name: Bring containers up
         run: docker-compose up --force-recreate --renew-anon-volumes -d
       - name: Sleep for 120 seconds
