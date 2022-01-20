@@ -17,7 +17,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.listener.ContainerProperties;
 import org.springframework.kafka.listener.MessageListenerContainer;
+import org.springframework.kafka.support.TopicPartitionOffset;
 import org.springframework.kafka.test.EmbeddedKafkaBroker;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.kafka.test.utils.ContainerTestUtils;
@@ -34,8 +36,8 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 @DirtiesContext
 @RunWith(SpringRunner.class)
-@EmbeddedKafka(partitions = 1 ,bootstrapServersProperty = "localhost:9092"
-        ,brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" }
+@EmbeddedKafka(partitions = 1,bootstrapServersProperty = "localhost:9092"
+        ,brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092", "num-partitions=1" }
         ,topics={"president.test"})
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestPropertySource(properties = { "spring.kafka.bootstrap-servers=localhost:9092","spring.kafka.consumer.auto-offset-reset=earliest" })
@@ -56,7 +58,7 @@ public class PredictItConsumerTests {
     public void setUp()  {
         for (final MessageListenerContainer messageListenerContainer : kafkaListenerEndpointRegistry.getListenerContainers()) {
             ContainerTestUtils.waitForAssignment(messageListenerContainer,
-                    embeddedKafkaBroker.getTopics().size() * embeddedKafkaBroker.getPartitionsPerTopic());
+                    1);
         }
     }
 
@@ -71,7 +73,7 @@ public class PredictItConsumerTests {
 
     /**
      * Should save 6 times a contract, because maximum of 5 contracts to save or an important name is in it so 6
-     * @throws Exception thrown because of thread sleep method
+     * @throws InterruptedException thrown because of thread sleep method
      */
     @Test
     public void testListenPresidentTopicsMoreThanFiveTopics() throws InterruptedException {
