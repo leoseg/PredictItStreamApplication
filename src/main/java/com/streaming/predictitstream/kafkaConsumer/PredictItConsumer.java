@@ -4,6 +4,7 @@ import com.streaming.predictitstream.PredictItStreamApplication;
 import com.streaming.predictitstream.entities.Contract;
 import com.streaming.predictitstream.entities.PredictItTopic;
 import com.streaming.predictitstream.services.candidateServices.ContractService;
+import org.apache.kafka.clients.consumer.Consumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.kafka.annotation.KafkaListener;
