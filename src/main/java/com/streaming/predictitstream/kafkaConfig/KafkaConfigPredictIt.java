@@ -59,7 +59,8 @@ public class KafkaConfigPredictIt {
     }
 
     /**
-     * Creates listener container for methods annotated with @kafkalistener, uses consumerfactory before defined
+     * Creates listener container for each method annotated with @kafkalistener
+     * for handling the connection to the kafka broker
      * provide multi threaded consumption
      * @return listenercontainerfactory
      */

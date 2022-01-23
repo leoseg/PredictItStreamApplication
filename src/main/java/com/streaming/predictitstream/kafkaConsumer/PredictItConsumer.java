@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.logging.Level;
@@ -24,16 +25,16 @@ public class PredictItConsumer {
 
     private final static Logger LOGGER = Logger.getLogger(PredictItStreamApplication.class.getName());
 
-    @Autowired
+    @Resource
     ContractService contractService;
 
-    @Autowired
+    @Resource
     @Qualifier("CollectionsBean")
     List<String> contractNames;
 
 
     /**
-     * Kafka listener to listen to all topics beginning with president.* and saving the to the same table
+     * Method for consuming all topics beginning with president.* and saving it to the to the same table
      * @param record record of type predictittopic with the data
      */
     @KafkaListener(topicPattern= "president.*", groupId = "group-1", containerFactory = "kafkaListenerContainerFactory")
