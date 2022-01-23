@@ -5,12 +5,13 @@ import com.streaming.predictitstream.repository.candidateRepositories.ContractRe
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.sql.Timestamp;
 
 @Service
 public class ContractPresidentService implements ContractService {
 
-    @Autowired
+    @Resource
     private ContractRepository contractPresidentRepository;
 
 
