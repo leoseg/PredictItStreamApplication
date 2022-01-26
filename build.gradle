@@ -56,4 +56,5 @@ dependencyManagement {
 test {
     outputs.dir snippetsDir
     useJUnitPlatform()
+    forkEvery =1
 }
