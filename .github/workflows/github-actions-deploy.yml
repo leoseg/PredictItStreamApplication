@@ -1,5 +1,9 @@
 name: deploy
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+  schedule:
+      - cron: '0 8 * * 5'
+
 jobs:
   deploy:
     runs-on: self-hosted
