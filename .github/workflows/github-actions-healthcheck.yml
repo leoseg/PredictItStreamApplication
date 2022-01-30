@@ -1,7 +1,5 @@
 name: healthcheck
-on:
-  schedule:
-      - cron:  '0 * * * *'
+on: [workflow_dispatch]
 jobs:
   check_if_containers_up:
     runs-on: self-hosted
