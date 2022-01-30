@@ -42,17 +42,17 @@ public class ContractServiceTests {
     }
 
     @Test
-    void testContractLogCreation(){
+    void givenContract_whenContractServiceSaveContract_thenContractFoundByRepositoryShouldHaveExspectedData(){
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         contractService.saveContract(testcontract,timestamp);
         List<ContractLog> contractLogList = contractRepository.findAll();
-        ContractLog exspectedContractLog = contractLogList.get(0);
+        ContractLog actualContract = contractLogList.get(0);
 
 
-        assert(exspectedContractLog.getLastTradePrice()==0.5);
-        assert(exspectedContractLog.getBestBuyYesCost()==0.8);
-        assert(exspectedContractLog.getBestBuyNoCost()==0.1);
-        assert(exspectedContractLog.getCandidateId()==25666);
+        assert(actualContract.getLastTradePrice()==0.5);
+        assert(actualContract.getBestBuyYesCost()==0.8);
+        assert(actualContract.getBestBuyNoCost()==0.1);
+        assert(actualContract.getCandidateId()==25666);
 
     }
 }

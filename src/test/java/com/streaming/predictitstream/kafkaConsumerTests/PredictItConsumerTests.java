@@ -83,7 +83,7 @@ public class PredictItConsumerTests {
      * @throws InterruptedException thrown because of thread sleep method
      */
     @Test
-    public void testListenPresidentTopicsMoreThanFiveTopics(@Autowired KafkaAdmin admin) throws InterruptedException, ExecutionException {
+    public void givenNineContractsProducedWithOneImportantContract_whenKafaListenerIsActive_thenSixContractsShouldBeSaved(@Autowired KafkaAdmin admin) throws InterruptedException, ExecutionException {
         AdminClient client = AdminClient.create(admin.getConfigurationProperties());
         Map<String, TopicDescription> map = client.describeTopics(Collections.singletonList("president.test")).all().get();
         JsonDataBuilder jsonDataBuilder = new JsonDataBuilder();
@@ -94,7 +94,7 @@ public class PredictItConsumerTests {
     }
 
     @Test
-    public void testListenPresidentTopicsTopics(@Autowired KafkaAdmin admin) throws InterruptedException, ExecutionException {
+    public void givenThreeContractsProduced_whenKafaListenerIsActive_thenThreeContractsShouldBeSaved(@Autowired KafkaAdmin admin) throws InterruptedException, ExecutionException {
         AdminClient client = AdminClient.create(admin.getConfigurationProperties());
         Map<String, TopicDescription> map = client.describeTopics(Collections.singletonList("president.test")).all().get();
         JsonDataBuilder jsonDataBuilder = new JsonDataBuilder();
