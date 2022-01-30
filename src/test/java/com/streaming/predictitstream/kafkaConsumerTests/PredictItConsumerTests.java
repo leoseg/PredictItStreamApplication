@@ -90,7 +90,7 @@ public class PredictItConsumerTests {
         jsonDataBuilder.buildPredictItJson(9,0.5,"Mario Draghi",0.2,0.3);
         kafkaTemplate.send("president.test",jsonDataBuilder.getJsonStringOfObject());
         Thread.sleep(5000);
-        verify(contractService,times(6)).saveContract(any(),any());
+        verify(contractService,times(6)).saveContract(any(), eq(Timestamp.valueOf("2022-01-22 16:15:22")));
     }
 
     @Test
@@ -101,7 +101,7 @@ public class PredictItConsumerTests {
         jsonDataBuilder.buildPredictItJson(3,0.5,"Mario Draghi",0.2,0.3);
         kafkaTemplate.send("president.test",jsonDataBuilder.getJsonStringOfObject());
         Thread.sleep(5000);
-        verify(contractService,times(3)).saveContract(any(),any());
+        verify(contractService,times(3)).saveContract(any(),eq(Timestamp.valueOf("2022-01-22 16:15:22")));
     }
 
 
