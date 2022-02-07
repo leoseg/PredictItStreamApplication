@@ -1,5 +1,6 @@
 package com.streaming.predictitstream.kafkaConfig;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.streaming.predictitstream.entities.PredictItTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
