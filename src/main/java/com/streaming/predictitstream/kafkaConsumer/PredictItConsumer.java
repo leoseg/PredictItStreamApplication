@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,7 +43,7 @@ public class PredictItConsumer {
     @KafkaListener(topicPattern= "president.*", groupId = "group-1", containerFactory = "kafkaListenerContainerFactory")
     public void listenPresidentTopics(PredictItTopic record) {
         LOGGER.log(Level.INFO, "Recieved message from " + record.getShortName()+ " at "+record.getTimeStamp());
-        Timestamp timestamp = record.getTimeStamp();
+        LocalDateTime timestamp = record.getTimeStamp();
         int counter = 0;
         for (Contract contract : record.getContracts()) {
             if (contractNames.contains(contract.getName()) || counter < 5) {

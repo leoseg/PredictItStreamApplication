@@ -31,7 +31,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -90,7 +90,7 @@ public class PredictItConsumerTests {
         jsonDataBuilder.buildPredictItJson(9,0.5,"Mario Draghi",0.2,0.3);
         kafkaTemplate.send("president.test",jsonDataBuilder.getJsonStringOfObject());
         Thread.sleep(5000);
-        verify(contractService,times(6)).saveContract(any(), eq(Timestamp.valueOf("2022-01-22 16:15:22")));
+        verify(contractService,times(6)).saveContract(any(), eq(LocalDateTime.parse("2022-01-22T15:15:22.00000")));
     }
 
     @Test
@@ -101,7 +101,7 @@ public class PredictItConsumerTests {
         jsonDataBuilder.buildPredictItJson(3,0.5,"Mario Draghi",0.2,0.3);
         kafkaTemplate.send("president.test",jsonDataBuilder.getJsonStringOfObject());
         Thread.sleep(5000);
-        verify(contractService,times(3)).saveContract(any(),eq(Timestamp.valueOf("2022-01-22 16:15:22")));
+        verify(contractService,times(3)).saveContract(any(),eq(LocalDateTime.parse("2022-01-22T15:15:22.00000")));
     }
 
 
