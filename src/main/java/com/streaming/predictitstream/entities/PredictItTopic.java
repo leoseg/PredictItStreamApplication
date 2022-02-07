@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -13,7 +15,7 @@ import java.util.List;
 public class PredictItTopic implements Serializable {
 
     @Getter@Setter
-    Timestamp timeStamp;
+    LocalDateTime timeStamp;
 
     @Getter@Setter
     List<Contract> contracts;

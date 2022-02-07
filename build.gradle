@@ -28,6 +28,7 @@ dependencies {
     implementation group: 'org.apache.kafka', name: 'kafka-clients'
     implementation 'com.fasterxml.jackson.core:jackson-core'
     implementation 'com.fasterxml.jackson.core:jackson-annotations'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
     //implementation 'org.hsqldb:hsqldb'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'com.google.cloud.sql:postgres-socket-factory:1.4.1'
