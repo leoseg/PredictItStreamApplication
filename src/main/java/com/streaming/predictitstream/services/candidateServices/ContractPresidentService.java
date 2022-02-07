@@ -2,11 +2,10 @@ package com.streaming.predictitstream.services.candidateServices;
 import com.streaming.predictitstream.entities.Contract;
 import com.streaming.predictitstream.entities.ContractLog;
 import com.streaming.predictitstream.repository.candidateRepositories.ContractRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Service
 public class ContractPresidentService implements ContractService {
@@ -16,7 +15,7 @@ public class ContractPresidentService implements ContractService {
 
 
     @Override
-    public void saveContract(Contract contract, Timestamp timestamp) {
+    public void saveContract(Contract contract, LocalDateTime timestamp) {
         ContractLog contractPresidentLog = new ContractLog();
         this.setContractLogData(contract, contractPresidentLog,timestamp);
         contractPresidentRepository.save(contractPresidentLog);
@@ -24,12 +23,12 @@ public class ContractPresidentService implements ContractService {
 
 
     @Override
-    public ContractLog setContractLogData(Contract contract, ContractLog contractPresidentLog, Timestamp timestamp) {
+    public void setContractLogData(Contract contract, ContractLog contractPresidentLog, LocalDateTime timestamp) {
             contractPresidentLog.setCandidateId(contract.getId());
             contractPresidentLog.setLastTradePrice(contract.getLastTradePrice());
+
             contractPresidentLog.setTimeStamp(timestamp);
             contractPresidentLog.setBestBuyNoCost(contract.getBestBuyNoCost());
             contractPresidentLog.setBestBuyYesCost(contract.getBestBuyYesCost());
-            return contractPresidentLog;
     }
 }

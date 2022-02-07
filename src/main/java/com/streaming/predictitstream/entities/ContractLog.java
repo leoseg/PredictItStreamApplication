@@ -1,11 +1,15 @@
 package com.streaming.predictitstream.entities;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.tomcat.jni.Local;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDateTime;
 
 /**
  * Used for mapping the contracts to the database over time
@@ -27,7 +31,7 @@ public class ContractLog {
     double lastTradePrice;
 
     @Getter@Setter
-    Timestamp timeStamp;
+    LocalDateTime timeStamp;
 
 
     @Getter@Setter

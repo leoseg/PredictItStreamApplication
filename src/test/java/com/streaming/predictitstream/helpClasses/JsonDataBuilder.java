@@ -27,7 +27,7 @@ public class JsonDataBuilder {
     public void buildPredictItJson(int numberContracts,double lastTradePrice,String name,double bestBuyYesCost, double bestBuyNoCost){
         ObjectNode PredictItTopic = objectMapper.createObjectNode();
         PredictItTopic.put("shortName","testtopic");
-        PredictItTopic.put("timeStamp", "2022-01-22T15:15:22");
+        PredictItTopic.put("timeStamp", "2022-01-22T15:15:22.00000");
         PredictItTopic.put("id",75660);
         ArrayNode contractArray = objectMapper.createArrayNode();
         for(int i=1; i<numberContracts;i++){

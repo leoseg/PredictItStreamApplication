@@ -15,6 +15,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -43,7 +45,7 @@ public class ContractServiceTests {
 
     @Test
     void givenContract_whenContractServiceSaveContract_thenContractFoundByRepositoryShouldHaveExspectedData(){
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        LocalDateTime timestamp = LocalDateTime.now();
         contractService.saveContract(testcontract,timestamp);
         List<ContractLog> contractLogList = contractRepository.findAll();
         ContractLog actualContract = contractLogList.get(0);
