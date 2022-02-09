@@ -21,8 +21,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: clean volume space
-        run: docker volume prune
+      - name: Clean instance from docker images
+        run: |
+            - docker kill $(docker ps -q)
+            - docker system prune --volumes -f
       - name: Update image
         run: docker-compose pull
       - name: Bring containers up
