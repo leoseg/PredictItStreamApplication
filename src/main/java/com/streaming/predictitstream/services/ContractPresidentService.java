@@ -1,7 +1,7 @@
-package com.streaming.predictitstream.services.candidateServices;
+package com.streaming.predictitstream.services;
 import com.streaming.predictitstream.entities.Contract;
 import com.streaming.predictitstream.entities.ContractLog;
-import com.streaming.predictitstream.repository.candidateRepositories.ContractRepository;
+import com.streaming.predictitstream.repository.ContractRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
