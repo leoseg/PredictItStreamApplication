@@ -3,17 +3,12 @@ package com.streaming.predictitstream.kafkaConsumer;
 import com.streaming.predictitstream.PredictItStreamApplication;
 import com.streaming.predictitstream.entities.Contract;
 import com.streaming.predictitstream.entities.PredictItTopic;
-import com.streaming.predictitstream.services.candidateServices.ContractService;
-import org.apache.kafka.clients.consumer.Consumer;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.streaming.predictitstream.services.ContractService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.logging.Level;

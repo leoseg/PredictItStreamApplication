@@ -1,6 +1,6 @@
 package com.streaming.predictitstream;
 
-import com.streaming.predictitstream.services.candidateServices.ContractService;
+import com.streaming.predictitstream.services.ContractService;
 import org.junit.jupiter.api.Test;
 import static org.junit.Assert.*;
 import org.springframework.beans.factory.annotation.Autowired;

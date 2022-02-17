@@ -1,4 +1,4 @@
-package com.streaming.predictitstream.services.candidateServices;
+package com.streaming.predictitstream.services;
 import com.streaming.predictitstream.entities.Contract;
 import com.streaming.predictitstream.entities.ContractLog;
 import org.springframework.stereotype.Service;

@@ -3,8 +3,8 @@ package com.streaming.predictitstream.servicesTests;
 
 import com.streaming.predictitstream.entities.Contract;
 import com.streaming.predictitstream.entities.ContractLog;
-import com.streaming.predictitstream.repository.candidateRepositories.ContractRepository;
-import com.streaming.predictitstream.services.candidateServices.ContractService;
+import com.streaming.predictitstream.repository.ContractRepository;
+import com.streaming.predictitstream.services.ContractService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -14,8 +14,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 
