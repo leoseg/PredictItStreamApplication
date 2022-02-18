@@ -23,4 +23,5 @@ Pull the repository to your machine.
 To deploy the application local provide the secrets for your google cloud postgres database in te secrets_template.env file and a creds.json with the google authentication data.
 Then you can run the script "deploy_local.sh".
 
-
+### Deploy on Google-Cloud-Instance
+For deploying on a GCI first install a self hosted runner along docker on a google cloud instance. Then set the corresponding secrets needed in the actions and finally run the build action and after that the deploy action. 
