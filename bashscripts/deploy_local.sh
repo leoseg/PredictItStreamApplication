@@ -4,9 +4,7 @@ cd .. &&
 ./gradlew build &&
 docker build . -f DockerfileConnect -t connectimage &&
 docker build . -t predictitconsumer &&
-cd other-libs &&
-docker build . -t twitterconsumer &&
-cd ..
+docker build . -f DockerfileTwitterConsumer -t twitterconsumer &&
 docker-compose -f docker-compose-local.yml up --force-recreate --renew-anon-volumes -d &&
 #docker exec predictitstream_kafka_1 cub kafka-ready -b localhost:9092 1 20
 cd bashscripts &&
