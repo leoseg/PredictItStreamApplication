@@ -14,6 +14,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,16 +24,16 @@ import java.util.List;
 public class ContractServiceTests {
 
 
-    @Autowired
+    @Resource
     ContractRepository contractRepository;
 
-    @Autowired
+    @Resource
     ContractService contractService;
 
     Contract testcontract;
 
     @BeforeEach
-    void setTextContract(){
+    void setTestContract(){
         testcontract = new Contract();
         testcontract.setBestBuyYesCost(0.8);
         testcontract.setLastTradePrice(0.5);
