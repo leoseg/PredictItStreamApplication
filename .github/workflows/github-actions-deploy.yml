@@ -9,6 +9,7 @@ jobs:
       SPRING_DATASOURCE_USERNAME: ${{ secrets.SPRING_DATASOURCE_USERNAME }}
       SPRING_DATASOURCE_PASSWORD: ${{ secrets.SPRING_DATASOURCE_PASSWORD }}
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      BEARER_TOKEN: ${{secrets.TWITTER_BEARER_TOKEN}}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -30,5 +31,10 @@ jobs:
         shell: bash
       - name: connect predictit api
         run: bash bashscripts/connect_predictit.sh
+        shell: bash
+      - name: connect predictit api
+        run: |
+          - export BEARER_TOKEN
+          - bash bashscripts/connect_twitter.sh
         shell: bash
 
