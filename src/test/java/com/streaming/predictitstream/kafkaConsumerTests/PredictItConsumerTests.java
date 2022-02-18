@@ -2,7 +2,7 @@ package com.streaming.predictitstream.kafkaConsumerTests;
 
 import com.streaming.predictitstream.helpClasses.JsonDataBuilder;
 import com.streaming.predictitstream.kafkaConsumer.PredictItConsumer;
-import com.streaming.predictitstream.services.ContractService;
+import com.streaming.predictitstream.services.ContractHandler;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.TopicDescription;
 import org.junit.jupiter.api.BeforeAll;
@@ -43,7 +43,7 @@ import static org.mockito.Mockito.*;
 public class PredictItConsumerTests {
 
     @MockBean
-    ContractService contractService;
+    ContractHandler contractHandler;
 
     @Autowired
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
@@ -82,7 +82,7 @@ public class PredictItConsumerTests {
         jsonDataBuilder.buildPredictItJson(9,0.5,"Mario Draghi",0.2,0.3);
         kafkaTemplate.send("president.test",jsonDataBuilder.getJsonStringOfObject());
         Thread.sleep(5000);
-        verify(contractService,times(6)).saveContract(any(), eq(LocalDateTime.parse("2022-01-22T15:15:22.00000")));
+        verify(contractHandler,times(6)).saveContract(any(), eq(LocalDateTime.parse("2022-01-22T15:15:22.00000")));
     }
 
     @Test
@@ -93,7 +93,7 @@ public class PredictItConsumerTests {
         jsonDataBuilder.buildPredictItJson(3,0.5,"Mario Draghi",0.2,0.3);
         kafkaTemplate.send("president.test",jsonDataBuilder.getJsonStringOfObject());
         Thread.sleep(5000);
-        verify(contractService,times(3)).saveContract(any(),eq(LocalDateTime.parse("2022-01-22T15:15:22.00000")));
+        verify(contractHandler,times(3)).saveContract(any(),eq(LocalDateTime.parse("2022-01-22T15:15:22.00000")));
     }
 
 

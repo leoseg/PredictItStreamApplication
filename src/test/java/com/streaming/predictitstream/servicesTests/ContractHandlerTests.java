@@ -4,7 +4,7 @@ package com.streaming.predictitstream.servicesTests;
 import com.streaming.predictitstream.entities.Contract;
 import com.streaming.predictitstream.entities.ContractLog;
 import com.streaming.predictitstream.repository.ContractRepository;
-import com.streaming.predictitstream.services.ContractService;
+import com.streaming.predictitstream.services.ContractHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -20,14 +20,14 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class ContractServiceTests {
+public class ContractHandlerTests {
 
 
     @Autowired
     ContractRepository contractRepository;
 
     @Autowired
-    ContractService contractService;
+    ContractHandler contractHandler;
 
     Contract testcontract;
 
@@ -42,9 +42,9 @@ public class ContractServiceTests {
     }
 
     @Test
-    void givenContract_whenContractServiceSaveContract_thenContractFoundByRepositoryShouldHaveExspectedData(){
+    void givenContract_whenContractHandlerSaveContract_thenContractFoundByRepositoryShouldHaveExspectedData(){
         LocalDateTime timestamp = LocalDateTime.now();
-        contractService.saveContract(testcontract,timestamp);
+        contractHandler.saveContract(testcontract,timestamp);
         List<ContractLog> contractLogList = contractRepository.findAll();
         ContractLog actualContract = contractLogList.get(0);
 
