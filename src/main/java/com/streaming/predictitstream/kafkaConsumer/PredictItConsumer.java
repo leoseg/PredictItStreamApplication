@@ -20,7 +20,6 @@ import java.util.logging.Logger;
 @Component
 public class PredictItConsumer {
 
-
     private final static Logger LOGGER = Logger.getLogger(PredictItStreamApplication.class.getName());
 
     @Resource
