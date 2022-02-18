@@ -9,6 +9,6 @@ docker-compose -f docker-compose-local.yml up --force-recreate --renew-anon-volu
 #docker exec predictitstream_kafka_1 cub kafka-ready -b localhost:9092 1 20
 cd bashscripts &&
 sleep 60 &&
-export BEARER_TOKEN
 sh ./connect_predictit.sh
+export BEARER_TOKEN
 sh ./connect_twitter.sh
