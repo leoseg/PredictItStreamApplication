@@ -1,6 +1,6 @@
 package com.streaming.predictitstream;
 
-import com.streaming.predictitstream.services.ContractService;
+import com.streaming.predictitstream.services.ContractHandler;
 import org.junit.jupiter.api.Test;
 import static org.junit.Assert.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class PredictItStreamApplicationTests {
 
     @Autowired
-    ContractService contractService;
+    ContractHandler contractHandler;
 
 
 
@@ -18,7 +18,7 @@ class PredictItStreamApplicationTests {
 
     @Test
     void contextLoads() {
-        assertNotNull(contractService);
+        assertNotNull(contractHandler);
     }
 
 }

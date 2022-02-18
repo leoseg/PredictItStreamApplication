@@ -1,7 +1,6 @@
 package com.streaming.predictitstream.kafkaConfig;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.streaming.predictitstream.entities.PredictItTopic;
+import com.streaming.predictitstream.entities.ContractMarket;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -37,7 +36,7 @@ public class KafkaConfigPredictIt {
      */
     @Bean
     @Lazy
-    public ConsumerFactory<String, PredictItTopic> consumerFactory() {
+    public ConsumerFactory<String, ContractMarket> consumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(
                 ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
@@ -52,7 +51,7 @@ public class KafkaConfigPredictIt {
                 ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,
                 JsonDeserializer.class);
         props.put(JsonSerializer.ADD_TYPE_INFO_HEADERS, false);
-        JsonDeserializer<PredictItTopic> deserializer = new JsonDeserializer<>(PredictItTopic.class);
+        JsonDeserializer<ContractMarket> deserializer = new JsonDeserializer<>(ContractMarket.class);
         deserializer.setRemoveTypeHeaders(false);
         deserializer.addTrustedPackages("*");
         deserializer.setUseTypeMapperForKey(true);
@@ -67,10 +66,10 @@ public class KafkaConfigPredictIt {
      */
     @Bean
     @Lazy
-    public ConcurrentKafkaListenerContainerFactory<String, PredictItTopic>
+    public ConcurrentKafkaListenerContainerFactory<String, ContractMarket>
     kafkaListenerContainerFactory() {
 
-        ConcurrentKafkaListenerContainerFactory<String, PredictItTopic> factory =
+        ConcurrentKafkaListenerContainerFactory<String, ContractMarket> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         factory.setBatchListener(true);
