@@ -8,12 +8,11 @@ import com.streaming.predictitstream.services.ContractHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,16 +22,16 @@ import java.util.List;
 public class ContractHandlerTests {
 
 
-    @Autowired
+    @Resource
     ContractRepository contractRepository;
 
-    @Autowired
+    @Resource
     ContractHandler contractHandler;
 
     Contract testcontract;
 
     @BeforeEach
-    void setTextContract(){
+    void setTestContract(){
         testcontract = new Contract();
         testcontract.setBestBuyYesCost(0.8);
         testcontract.setLastTradePrice(0.5);

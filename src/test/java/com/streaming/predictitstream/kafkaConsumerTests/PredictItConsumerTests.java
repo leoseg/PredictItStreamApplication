@@ -3,29 +3,23 @@ package com.streaming.predictitstream.kafkaConsumerTests;
 import com.streaming.predictitstream.helpClasses.JsonDataBuilder;
 import com.streaming.predictitstream.kafkaConsumer.PredictItConsumer;
 import com.streaming.predictitstream.services.ContractHandler;
-import org.apache.kafka.clients.admin.AdminClient;
-import org.apache.kafka.clients.admin.TopicDescription;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
-import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.listener.MessageListenerContainer;
 import org.springframework.kafka.test.EmbeddedKafkaBroker;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.kafka.test.utils.ContainerTestUtils;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -39,17 +33,16 @@ import static org.mockito.Mockito.*;
         ,brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092", "num-partitions=1" }
         ,topics={"president.test"})
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@TestPropertySource(properties = { "spring.kafka.bootstrap-servers=localhost:9092","spring.kafka.consumer.auto-offset-reset=earliest" })
 public class PredictItConsumerTests {
 
     @MockBean
     ContractHandler contractHandler;
 
-    @Autowired
+    @Resource
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     private EmbeddedKafkaBroker embeddedKafkaBroker;
 
-    @Autowired
+    @Resource
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     private KafkaListenerEndpointRegistry kafkaListenerEndpointRegistry;
 
@@ -61,10 +54,10 @@ public class PredictItConsumerTests {
         }
     }
 
-    @Autowired
+    @Resource
     private KafkaTemplate<String,String> kafkaTemplate;
 
-    @Autowired
+    @Resource
     private PredictItConsumer predictItConsumer;
 
 
@@ -75,9 +68,7 @@ public class PredictItConsumerTests {
      * @throws InterruptedException thrown because of thread sleep method
      */
     @Test
-    public void givenNineContractsProducedWithOneImportantContract_whenKafaListenerIsActive_thenSixContractsShouldBeSaved(@Autowired KafkaAdmin admin) throws InterruptedException, ExecutionException {
-        AdminClient client = AdminClient.create(admin.getConfigurationProperties());
-        Map<String, TopicDescription> map = client.describeTopics(Collections.singletonList("president.test")).all().get();
+    public void givenNineContractsProducedWithOneImportantContract_whenKafaListenerIsActive_thenSixContractsShouldBeSaved() throws InterruptedException, ExecutionException {
         JsonDataBuilder jsonDataBuilder = new JsonDataBuilder();
         jsonDataBuilder.buildPredictItJson(9,0.5,"Mario Draghi",0.2,0.3);
         kafkaTemplate.send("president.test",jsonDataBuilder.getJsonStringOfObject());
@@ -86,9 +77,7 @@ public class PredictItConsumerTests {
     }
 
     @Test
-    public void givenThreeContractsProduced_whenKafaListenerIsActive_thenThreeContractsShouldBeSaved(@Autowired KafkaAdmin admin) throws InterruptedException, ExecutionException {
-        AdminClient client = AdminClient.create(admin.getConfigurationProperties());
-        Map<String, TopicDescription> map = client.describeTopics(Collections.singletonList("president.test")).all().get();
+    public void givenThreeContractsProduced_whenKafaListenerIsActive_thenThreeContractsShouldBeSaved() throws InterruptedException, ExecutionException {
         JsonDataBuilder jsonDataBuilder = new JsonDataBuilder();
         jsonDataBuilder.buildPredictItJson(3,0.5,"Mario Draghi",0.2,0.3);
         kafkaTemplate.send("president.test",jsonDataBuilder.getJsonStringOfObject());
