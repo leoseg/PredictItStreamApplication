@@ -87,6 +87,22 @@ services:
         source: ./creds.json
         target: /gcp/creds.json
 
+  kafka-consumer-twitter:
+    image: twitterconsumer
+    environment:
+      KAFKAADRESS: "kafka:29092"
+      GOOGLE_APPLICATION_CREDENTIALS: "/gcp/creds.json"
+    env_file:
+      - databasesecrets.env
+    depends_on:
+      - zookeeper
+      - kafka
+      - schema-registry
+    volumes:
+      - type: bind
+        source: ./creds.json
+        target: /gcp/creds.json
+
   kafka-setup:
     image: confluentinc/cp-kafka:5.1.1
     depends_on:
