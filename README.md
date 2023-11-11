@@ -41,4 +41,4 @@ To deploy the application local provide the secrets for your google cloud postgr
 Then you can run the script "deploy_local.sh".
 
 ### Deploy on Google-Cloud-Instance
-For deploying on a GCI first install a self hosted runner along docker on a google cloud instance. Then set the corresponding secrets needed in the actions and finally run the build action and after that the deploy action. 
+For deploying on a GCI first install a self hosted runner along docker on a google cloud instance. Then set the corresponding secrets needed in the actions and finally run the build action and after that the deploy action. This will setup a test stage with only one ec2, the services can also deployed as microservices to make them more scalable, Kafka should be provided by the corresponding cloud Provider.
