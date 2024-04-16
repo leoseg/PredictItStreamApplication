@@ -6,7 +6,7 @@ is processed each hour. The rest-api connector used is from the community projec
 https://github.com/llofberg/kafka-connect-rest . 
 
 The idea is then to combine the data from the two sources in a plot see my other project:
-https://github.com/leoseg/Display-PredictIt-Data-Webpage
+https://github.com/leoseg/Display-PredictIt-Data-Webpage for displaying the data and https://github.com/leoseg/TwitterDataProcessing for getting the twitter data.
 
 ## Data Streamed
 
